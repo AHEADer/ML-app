@@ -53,6 +53,6 @@ def xgboost(input):
     return True
 
 
-run(host='localhost', port=8080, debug=True)
+run(host='0.0.0.0', port=8080, debug=True)
 
 
