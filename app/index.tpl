@@ -1,10 +1,26 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Heart disease risk testing</title>
+    <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+    
+    
+        <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
+<link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
+
+        <link rel="stylesheet" href="css/style.css">
+        
+    </head>
+<body>
 <div class="container">
 
     <form class="well form-horizontal" action="/dataset1" method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Test if you have a heart disease!</legend>
+<legend>Test your heart disease risk.</legend>
 
 <!-- Text input-->
 
@@ -55,7 +71,7 @@
   <label class="col-md-4 control-label">resting blood pressure on admission to hospital</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
   <input name="restbp" placeholder="continuous (mmHg)" class="form-control"  type="text">
     </div>
   </div>
@@ -66,7 +82,7 @@
   <label class="col-md-4 control-label">serum cholesterol level</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
   <input name="chol" placeholder="continuous (mg/dl)" class="form-control"  type="text">
     </div>
   </div>
@@ -108,7 +124,7 @@
   <label class="col-md-4 control-label">maximum heart rate achieved</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
   <input name="thalach" placeholder="maximum heart rate achieved" class="form-control"  type="text">
     </div>
   </div>
@@ -134,7 +150,7 @@
   <label class="col-md-4 control-label">ST depression induced by exercise relative to rest</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
   <input name="oldpeak" placeholder="continuous" class="form-control"  type="text">
     </div>
   </div>
@@ -225,8 +241,6 @@
 </div>
 </div>
 
-<!-- Success message -->
-<div class="alert alert-success" role="alert" id="success_message">= = <i class="glyphicon glyphicon-thumbs-up"></i> : )</div>
 
 <!-- Button -->
 <div class="form-group">
@@ -240,3 +254,5 @@
 </form>
 </div>
     </div><!-- /.container --> 
+  </body>
+</html>

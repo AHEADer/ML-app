@@ -45,10 +45,6 @@ def predict(result):
         return "probably no heart disease"
 
 
-def svm(input):
-    return True
-
-
 def xgboost(input):
     return True
 
