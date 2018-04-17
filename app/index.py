@@ -2,8 +2,12 @@ from bottle import *
 import pandas as pd
 import numpy as np
 from model import *
-from heart_sound_verify import *
+# from heart_sound_verify import *
+import scipy.io.wavfile as wav
+from scipy.fftpack import fft
 import os
+from keras.models import load_model
+
 
 @route('/css/<filename:path>')
 def server_static(filename):
@@ -67,6 +71,7 @@ def index():
     wav_file.save(file_path)
     
     #begin to process
+    '''
     fft_length = 120
     data = data_process(save_path, wav_file.filename)
     X = -np.ones([1, fft_length])
@@ -74,18 +79,62 @@ def index():
     X = np.reshape(X, [1, 1, fft_length])
     model1 = fft_model()
     model1.load_weights("./fft_detector.h5")
-    result = model1.predict(X)
-    print(result)
+    result1 = model1.predict(X)
+    print(result1[0][0])
+    '''
+    print (file_path)
+    murmur, extra = heartsound_classifier(file_path)
+    print(murmur, extra)
+    
     msg = ""
-    if result[0][0]<0.2:
-        msg = "You have a high risk of heart disease"
-    elif result[0][0]<0.4:
-        msg = "You have a risk of heart disease"
+    if murmur[0][0]>extra[0][0]:
+        if murmur[0][0]>0.8:
+            msg = "You have a high risk of murmur heart"
+        else:
+            msg = "You may not have a heart disease"
+    elif extra[0][0]>0.8:
+        msg = "You have a risk of extrahls heart"
     else:
         msg = "You may not have a heart disease"
     if os.path.exists(file_path):
         os.remove(file_path)
     return {"error": msg}
+
+
+def heartsound_classifier(name,modelfile1='./fft_detector.h5',modelfile2='./pulse_detector.h5'):
+    model1 = load_model(modelfile1)
+    model2 = load_model(modelfile2)
+    # fft_feature = None
+    # pulse_feature = None
+    fft_length = 120
+    pulse_length = 400
+    
+    x = wav.read(name)
+    fft_feature = np.abs(fft(x[1],2048))[:fft_length].reshape(1,1,fft_length)
+    pulse_feature = get_pulse_feature(x).reshape(1,1,pulse_length)
+    filenames = [name]
+    n = 1
+    
+    murmur = 1-model1.predict(fft_feature)
+    extra = 1-model2.predict(pulse_feature)
+    
+    return murmur, extra
+        
+
+def get_pulse_feature(x,pulse_length=400):
+    fs = x[0]
+    x_abs = np.abs(x[1])
+    # a heart beat pulse is shorter than 0.075s. 
+    pulse_feature = -np.ones(pulse_length)
+    valid_pos = np.where(x_abs>-1)[0]
+    valid_pos = (np.floor(valid_pos/(fs*0.075))).astype(int)
+    pulse_feature[valid_pos] = 0
+    pulse_pos = np.where(x_abs>np.minimum(np.max(x_abs)*0.4,np.median(x_abs)*15))[0]
+    pulse_pos = (np.floor(pulse_pos/(fs*0.075))).astype(int)
+    pulse_feature[pulse_pos] = 1
+    
+    return pulse_feature
+
 
 def predict(result):
     if result is True:
