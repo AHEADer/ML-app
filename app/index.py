@@ -2,10 +2,27 @@ from bottle import *
 import pandas as pd
 import numpy as np
 from model import *
+from heart_sound_verify import *
+import os
 
-@route('/')
+@route('/css/<filename:path>')
+def server_static(filename):
+    return static_file(filename, root='./css/')
+
+
+@route('/js/<filename:path>')
+def server_static(filename):
+    return static_file(filename, root='./js/')
+
+
+@route('/dataset1')
 def index():
     return template('index')
+
+
+@route('/dataset3')
+def index():
+    return template('input')
 
 
 @post('/dataset1')
@@ -37,6 +54,37 @@ def index():
         return predict(True)
     # return "hhh"
 
+
+@post('/dataset3')
+def index():
+    for i in request.files:
+        print(i)
+    wav_file = request.files.get("input-b2")
+    save_path = "./dataset3/"
+    file_path = save_path+wav_file.filename
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    wav_file.save(file_path)
+    
+    #begin to process
+    fft_length = 120
+    data = data_process(save_path, wav_file.filename)
+    X = -np.ones([1, fft_length])
+    X[0] = data.iloc[0]['fft_feature']
+    X = np.reshape(X, [1, 1, fft_length])
+    model1 = fft_model()
+    model1.load_weights("./fft_detector.h5")
+    result = model1.predict(X)
+    print(result)
+    msg = ""
+    if result[0][0]<0.2:
+        msg = "You have a high risk of heart disease"
+    elif result[0][0]<0.4:
+        msg = "You have a risk of heart disease"
+    else:
+        msg = "You may not have a heart disease"
+    
+    return {"error": msg}
 
 def predict(result):
     if result is True:

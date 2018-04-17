@@ -68,7 +68,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">resting blood pressure on admission to hospital</label>  
+  <label class="col-md-4 control-label">Resting blood pressure on admission to hospital</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
@@ -79,7 +79,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">serum cholesterol level</label>  
+  <label class="col-md-4 control-label">Serum cholesterol level</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
@@ -90,7 +90,7 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label">fasting blood sugar</label>
+  <label class="col-md-4 control-label">Fasting blood sugar</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
@@ -105,15 +105,15 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label">resting electrocardiography</label>
+  <label class="col-md-4 control-label">Resting electrocardiography</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="restecg" class="form-control selectpicker" >
       <option value=" " >Please select your restecg</option>
-      <option value="0">normal</option>
+      <option value="0">Normal</option>
       <option value="1">ST-T wave abnormality</option>
-      <option value="2">left ventricular hypertrophy</option>
+      <option value="2">Left ventricular hypertrophy</option>
     </select>
   </div>
 </div>
@@ -121,7 +121,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">maximum heart rate achieved</label>  
+  <label class="col-md-4 control-label">Maximum heart rate achieved</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
@@ -132,7 +132,7 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label">exercise induced angina</label>
+  <label class="col-md-4 control-label">Exercise induced angina</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
@@ -158,15 +158,15 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label">slope of peak exercise ST segment</label>
+  <label class="col-md-4 control-label">Slope of peak exercise ST segment</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="slope" class="form-control selectpicker" >
       <option value=" " >Please select your slope</option>
-      <option value="1">upsloping</option>
-      <option value="2">flat</option>
-      <option value="3">downsloping</option>
+      <option value="1">Upsloping</option>
+      <option value="2">Flat</option>
+      <option value="3">Downsloping</option>
     </select>
   </div>
 </div>
@@ -174,7 +174,7 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label">number of major vessels colored by fluoroscopy</label>
+  <label class="col-md-4 control-label">Number of major vessels colored by fluoroscopy</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
@@ -191,15 +191,15 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label">categorical</label>
+  <label class="col-md-4 control-label">Categorical</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="thal" class="form-control selectpicker" >
       <option value=" " >Please select your </option>
-      <option value="3">normal</option>
-      <option value="6">fixed defect</option>
-      <option value="7">reversible defect</option>
+      <option value="3">Normal</option>
+      <option value="6">Fixed defect</option>
+      <option value="7">Reversible defect</option>
     </select>
   </div>
 </div>
