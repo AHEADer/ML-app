@@ -83,7 +83,8 @@ def index():
         msg = "You have a risk of heart disease"
     else:
         msg = "You may not have a heart disease"
-    
+    if os.path.exists(file_path):
+        os.remove(file_path)
     return {"error": msg}
 
 def predict(result):
