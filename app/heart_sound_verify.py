@@ -60,15 +60,3 @@ def fft_model(fft_length=fft_length):
     model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
 
     return model
-
-location = "/home/david/tmp/ML-project/dataset3/heartbeat-sounds/set_a/"
-filename = "extrahls__201101070953.wav"
-data = data_process(location, filename)
-X = -np.ones([1, fft_length])
-hz = data.iloc[0]['sample_frequency']
-X[0] = data.iloc[0]['fft_feature']
-X = np.reshape(X, [1, 1, fft_length])
-model1 = fft_model()
-model1.load_weights("/home/david/tmp/ML-project/dataset3/fft_detector.h5")
-result = model1.predict(X)
-print(result)
